@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Регистрация</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .star { color: red; }
+    #msg { color: red; }
+  </style>
+  <script>
+    function CheckData() {
+      var errors = "";
+
+      // 1. проверка заполнения обязательных полей
+      if (document.getElementById("uname").value.length == 0) {
+        errors += "Не заполнено поле «Имя».<br>";
+      }
+      if (document.getElementById("email").value.length == 0) {
+        errors += "Не заполнено поле «Адрес эл. почты».<br>";
+      }
+
+      // 2. проверка структуры адреса электронной почты
+      var email = document.getElementById("email").value;
+      var pattnEmail = /^[\.\-_A-Za-z0-9]+?@[\.\-A-Za-z0-9]+?\.[A-Za-z0-9]{2,6}$/;
+      if (email.length > 0 && !pattnEmail.test(email)) {
+        errors += "Адрес эл. почты указан неверно.<br>";
+      }
+
+      // 3. проверка номера телефона (поле необязательное)
+      // допустимо: +7 (900) 123-45-67, 8 900 123 45 67, 89001234567
+      var phone = document.getElementById("phone").value;
+      var pattnPhone = /^(\+7|8)[\- ]?\(?\d{3}\)?[\- ]?\d{3}[\- ]?\d{2}[\- ]?\d{2}$/;
+      if (phone.length > 0 && !pattnPhone.test(phone)) {
+        errors += "Номер телефона указан неверно.<br>";
+      }
+
+      // вывод ошибок или отправка
+      document.getElementById("msg").innerHTML = errors;
+      if (errors == "") {
+        var ans = confirm("Вы уверены, что хотите отправить введенные данные?");
+        if (ans) {
+          document.getElementById("regForm").submit();
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Для регистрации необходимо указать ваши персональные данные</h2>
+
+  <form id="regForm" action="ok.html" method="get" onsubmit="CheckData(); return false;">
+    <table cellpadding="5">
+      <tr>
+        <td><span class="star">*</span> Имя</td>
+        <td><input type="text" id="uname" name="uname"></td>
+      </tr>
+      <tr>
+        <td>Организация (компания)</td>
+        <td><input type="text" id="company" name="company"></td>
+      </tr>
+      <tr>
+        <td>Телефон</td>
+        <td><input type="text" id="phone" name="phone"></td>
+      </tr>
+      <tr>
+        <td><span class="star">*</span> Адрес эл. почты</td>
+        <td><input type="text" id="email" name="email"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="Отправить"></td>
+        <td><input type="reset" value="Очистить"></td>
+      </tr>
+    </table>
+  </form>
+
+  <p id="msg"></p>
+  <p><span class="star">*</span> Поля обязательные для заполнения</p>
+</body>
+</html>

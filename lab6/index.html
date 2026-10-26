@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Площадь треугольника по трём сторонам</title>
+  <script>
+    function calcArea() {
+      var a = parseFloat(document.form1.a.value);
+      var b = parseFloat(document.form1.b.value);
+      var c = parseFloat(document.form1.c.value);
+
+      // проверка ввода
+      if (isNaN(a) || isNaN(b) || isNaN(c) || a <= 0 || b <= 0 || c <= 0) {
+        document.form1.s.value = "Введите положительные числа";
+        return;
+      }
+      // проверка существования треугольника
+      if (a + b <= c || a + c <= b || b + c <= a) {
+        document.form1.s.value = "Такого треугольника не существует";
+        return;
+      }
+
+      // формула Герона
+      var p = (a + b + c) / 2;
+      var s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+      document.form1.s.value = s.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <h1>Площадь треугольника по трём сторонам</h1>
+
+  <form name="form1">
+    <p>Сторона a: <input type="text" name="a" size="10"></p>
+    <p>Сторона b: <input type="text" name="b" size="10"></p>
+    <p>Сторона c: <input type="text" name="c" size="10"></p>
+    <p><input type="button" value="Вычислить" onclick="calcArea()"></p>
+    <p>Площадь: <input type="text" name="s" size="35" readonly></p>
+  </form>
+</body>
+</html>

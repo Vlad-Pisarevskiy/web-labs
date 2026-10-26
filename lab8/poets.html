@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Лабораторная работа №8. Задание 2</title>
+  <script>
+    // конструктор пользовательского объекта Поэт
+    function Poet(name, birthYear, deathYear, work) {
+      // свойства
+      this.name = name;
+      this.birthYear = birthYear;
+      this.deathYear = deathYear;
+      this.work = work;
+
+      // метод: сколько лет прожил поэт
+      this.getAge = function () {
+        return this.deathYear - this.birthYear;
+      };
+
+      // метод: строка таблицы с данными о поэте
+      this.getRow = function () {
+        return "<tr><td>" + this.name + "</td><td>" + this.birthYear + " – " + this.deathYear
+          + "</td><td>" + this.getAge() + "</td><td>" + this.work + "</td></tr>";
+      };
+    }
+  </script>
+</head>
+<body>
+  <h1>Задание 2. Объект «Поэт»</h1>
+
+  <script>
+    var poets = new Array(
+      new Poet("Александр Пушкин", 1799, 1837, "Евгений Онегин"),
+      new Poet("Михаил Лермонтов", 1814, 1841, "Мцыри"),
+      new Poet("Фёдор Тютчев", 1803, 1873, "Весенняя гроза"),
+      new Poet("Афанасий Фет", 1820, 1892, "Шёпот, робкое дыханье"),
+      new Poet("Николай Некрасов", 1821, 1878, "Кому на Руси жить хорошо"),
+      new Poet("Александр Блок", 1880, 1921, "Двенадцать"),
+      new Poet("Сергей Есенин", 1895, 1925, "Анна Снегина"),
+      new Poet("Владимир Маяковский", 1893, 1930, "Облако в штанах"),
+      new Poet("Анна Ахматова", 1889, 1966, "Реквием"),
+      new Poet("Марина Цветаева", 1892, 1941, "Поэма горы")
+    );
+
+    document.write("<table border='1' cellpadding='6'>");
+    document.write("<tr><th>Поэт</th><th>Годы жизни</th><th>Прожил лет</th><th>Известное произведение</th></tr>");
+    for (var i = 0; i < poets.length; i++) {
+      document.write(poets[i].getRow());
+    }
+    document.write("</table>");
+
+    document.write("<p>Всего поэтов: " + poets.length + "</p>");
+  </script>
+
+  <p><a href="index.html">Задание 1</a></p>
+</body>
+</html>

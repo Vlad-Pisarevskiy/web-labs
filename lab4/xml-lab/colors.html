@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Таблица случайных цветов</title>
+</head>
+<body>
+  <h1>Таблица случайно выбранных цветов</h1>
+
+  <script>
+    // получение одной компоненты цвета (две шестнадцатеричные цифры)
+    function component() {
+      var color = Math.round(255.0 * Math.random());
+      var c = color.toString(16);
+      if (c.length < 2) {
+        c = "0" + c;
+      }
+      return c;
+    }
+
+    document.write("<table border='1' cellpadding='10'>");
+    for (var i = 1; i <= 6; i++) {
+      document.write("<tr>");
+      for (var j = 1; j <= 8; j++) {
+        var color = component() + component() + component();
+        document.write("<td bgcolor='#" + color + "'>#" + color + "</td>");
+      }
+      document.write("</tr>");
+    }
+    document.write("</table>");
+  </script>
+
+  <p>Обновите страницу, чтобы получить новую таблицу цветов.</p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Лабораторная работа №7</title>
+  <script>
+    // Задание 1: чётное или нечётное число
+    function checkEven() {
+      var n = Number(document.form1.num.value);
+
+      if (document.form1.num.value == "" || isNaN(n) || n % 1 != 0) {
+        document.form1.result.value = "введите целое число";
+      } else if (n % 2 == 0) {
+        document.form1.result.value = "четное число";
+      } else {
+        document.form1.result.value = "нечетное";
+      }
+    }
+
+    // Задание 2: является ли натуральное число палиндромом
+    function checkPalindrome() {
+      var n = Number(document.form2.num.value);
+
+      if (document.form2.num.value == "" || isNaN(n) || n % 1 != 0 || n < 1) {
+        document.form2.result.value = "введите натуральное число";
+        return;
+      }
+
+      // переворачиваем число: берём последнюю цифру и дописываем её в конец нового числа
+      var x = n;
+      var reversed = 0;
+      while (x > 0) {
+        reversed = reversed * 10 + x % 10;
+        x = Math.floor(x / 10);
+      }
+
+      if (reversed == n) {
+        document.form2.result.value = "число является палиндромом";
+      } else {
+        document.form2.result.value = "число не является палиндромом";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Лабораторная работа №7</h1>
+
+  <h2>Задание 1. Чётность числа</h2>
+  <form name="form1">
+    <p>Целое число: <input type="text" name="num" size="15"></p>
+    <p>Результат: <input type="text" name="result" size="30" readonly></p>
+    <p>
+      <input type="button" value="Подтвердить" onclick="checkEven()">
+      <input type="reset" value="Сбросить">
+    </p>
+  </form>
+
+  <h2>Задание 2. Число-палиндром</h2>
+  <form name="form2">
+    <p>Натуральное число: <input type="text" name="num" size="15"></p>
+    <p>Результат: <input type="text" name="result" size="30" readonly></p>
+    <p>
+      <input type="button" value="Проверить" onclick="checkPalindrome()">
+      <input type="reset" value="Сбросить">
+    </p>
+  </form>
+</body>
+</html>

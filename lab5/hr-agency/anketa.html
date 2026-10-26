@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Писаревский В.Н.">
+  <title>Анкета соискателя – Вектор карьеры</title>
+  <link rel="stylesheet" href="styles/pages.css">
+</head>
+<body>
+  <header id="header">
+    <div class="wrapper">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="Логотип агентства"> Вектор карьеры</a>
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="vacancies.html">Вакансии</a></li>
+          <li><a href="about.html">Об агентстве</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a class="current" href="anketa.html">Анкета соискателя</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="page-title">
+    <div class="wrapper">
+      <h1>Анкета соискателя</h1>
+      <p>Заполните анкету, и консультант свяжется с вами в течение двух рабочих дней.</p>
+    </div>
+  </section>
+
+  <main class="wrapper">
+    <form id="anketa" action="mailto:info@example.com" method="post" enctype="text/plain">
+      <input type="hidden" name="form" value="anketa">
+
+      <fieldset>
+        <legend>Личные данные</legend>
+        <p>
+          <label for="fio">ФИО:</label><br>
+          <input type="text" id="fio" name="fio" size="40" maxlength="100">
+        </p>
+        <p>
+          <label for="birth">Дата рождения:</label><br>
+          <input type="text" id="birth" name="birth" size="12" value="дд.мм.гггг">
+        </p>
+        <p>
+          Пол:
+          <input type="radio" id="male" name="gender" value="м" checked> <label for="male">мужской</label>
+          <input type="radio" id="female" name="gender" value="ж"> <label for="female">женский</label>
+        </p>
+        <p>
+          <label for="phone">Телефон:</label><br>
+          <input type="text" id="phone" name="phone" size="20">
+        </p>
+        <p>
+          <label for="email">Электронная почта:</label><br>
+          <input type="text" id="email" name="email" size="30">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Желаемая должность</legend>
+        <p>
+          <label for="vacancy">Вакансия:</label><br>
+          <select id="vacancy" name="vacancy">
+            <option>Менеджер по продажам</option>
+            <option>Бухгалтер</option>
+            <option>Frontend-разработчик</option>
+            <option>Водитель категории C</option>
+            <option>Администратор салона</option>
+            <option selected>Другая должность</option>
+          </select>
+        </p>
+        <p>
+          <label for="salary">Желаемая зарплата, руб.:</label><br>
+          <input type="text" id="salary" name="salary" size="12">
+        </p>
+        <p>
+          Подходящий график работы:<br>
+          <input type="checkbox" id="g1" name="schedule" value="полный день"> <label for="g1">полный день</label>
+          <input type="checkbox" id="g2" name="schedule" value="сменный"> <label for="g2">сменный график</label>
+          <input type="checkbox" id="g3" name="schedule" value="удалённо"> <label for="g3">удалённая работа</label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Образование и опыт</legend>
+        <p>
+          <label for="education">Образование:</label><br>
+          <select id="education" name="education">
+            <option>Среднее</option>
+            <option>Среднее специальное</option>
+            <option selected>Высшее</option>
+          </select>
+        </p>
+        <p>
+          <label for="experience">Опыт работы (места работы, должности, обязанности):</label><br>
+          <textarea id="experience" name="experience" rows="6" cols="60"></textarea>
+        </p>
+        <p>
+          <label for="resume">Файл резюме:</label><br>
+          <input type="file" id="resume" name="resume">
+        </p>
+      </fieldset>
+
+      <p>
+        <input type="checkbox" id="agree" name="agree" value="да"> <label for="agree">Согласен на обработку персональных данных</label>
+      </p>
+      <p>
+        <input type="submit" value="Отправить анкету">
+        <input type="reset" value="Очистить">
+      </p>
+    </form>
+  </main>
+
+  <footer id="footer">
+    <div class="wrapper">
+      <p>&copy; 2026 Кадровое агентство «Вектор карьеры». Учебный проект.</p>
+    </div>
+  </footer>
+</body>
+</html>

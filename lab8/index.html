@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Лабораторная работа №8. Задание 1</title>
+  <script>
+    // добавляет ведущий ноль: 5 -> "05"
+    function twoDigits(n) {
+      if (n < 10) {
+        return "0" + n;
+      }
+      return "" + n;
+    }
+
+    // площадь треугольника по двум сторонам и углу между ними
+    function calcArea() {
+      var a = parseFloat(document.form1.a.value);
+      var b = parseFloat(document.form1.b.value);
+      var angle = parseFloat(document.form1.angle.value);
+
+      if (isNaN(a) || isNaN(b) || isNaN(angle) || a <= 0 || b <= 0 || angle <= 0 || angle >= 180) {
+        document.form1.s.value = "Проверьте введённые данные";
+        return;
+      }
+
+      var rad = angle * Math.PI / 180;   // перевод градусов в радианы
+      var s = 0.5 * a * b * Math.sin(rad);
+      document.form1.s.value = s.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <h1>Задание 1</h1>
+
+  <script>
+    var months = new Array("января", "февраля", "марта", "апреля", "мая", "июня",
+                           "июля", "августа", "сентября", "октября", "ноября", "декабря");
+    var days = new Array("воскресенье", "понедельник", "вторник", "среда",
+                         "четверг", "пятница", "суббота");
+    var now = new Date();
+
+    document.write("<p><b>Сегодня - " + now.getDate() + " " + months[now.getMonth()] + " "
+      + now.getFullYear() + " года, " + twoDigits(now.getHours()) + ":"
+      + twoDigits(now.getMinutes()) + ":" + twoDigits(now.getSeconds()) + ", "
+      + days[now.getDay()] + "</b></p>");
+  </script>
+
+  <h2>Площадь треугольника по двум сторонам и углу между ними</h2>
+  <form name="form1">
+    <p>Сторона a: <input type="text" name="a" size="10"></p>
+    <p>Сторона b: <input type="text" name="b" size="10"></p>
+    <p>Угол между ними, градусов: <input type="text" name="angle" size="10"></p>
+    <p><input type="button" value="Вычислить" onclick="calcArea()"></p>
+    <p>Площадь: <input type="text" name="s" size="30" readonly></p>
+  </form>
+
+  <p><a href="poets.html">Задание 2 – объект «Поэт»</a></p>
+</body>
+</html>
